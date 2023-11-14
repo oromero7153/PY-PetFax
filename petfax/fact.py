@@ -15,7 +15,11 @@ def index():
 
         return redirect ('/facts')
     
-    return render_template('facts/index.html')
+    results = models.Fact.query.all()
+    for result in results:
+        print(result)
+    
+    return render_template('facts/index.html', facts=results)
 
 
 @bp.route('/new')
